@@ -1,0 +1,209 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #007BFF;
+      border-bottom: 2px solid #007BFF;
+      padding-bottom: 5px;
+    }
+
+    .form-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .form-section h3 {
+      color: #0056b3;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .hidden-field {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Exit Interview Form</h2>
+  
+  <form action="YOUR_FORM_SUBMISSION_URL" method="post">
+
+    <!-- Hidden fields pre-filled from email -->
+    <input type="hidden" name="emp_name" value="{row['emp_name']}" class="hidden-field">
+    <input type="hidden" name="emp_code" value="{row['emp_code']}" class="hidden-field">
+    <input type="hidden" name="dept_name" value="{row['dept_name']}" class="hidden-field">
+    <input type="hidden" name="des_name" value="{row['des_name']}" class="hidden-field">
+    <input type="hidden" name="resignation_date" value="{row['resignation_date']}" class="hidden-field">
+    <input type="hidden" name="releaving_date" value="{releaving_date or ''}" class="hidden-field">
+    <input type="hidden" name="remarks" value="{remarks or ''}" class="hidden-field">
+
+
+    <!-- Section 2: Reason for Leaving -->
+    <div class="form-section">
+
+      <label>Two most crucial reasons for quitting:</label>
+      <textarea name="two_crucial_reasons" rows="2"></textarea>
+
+      <label>Most important factors in deciding to take a new job:</label>
+      <textarea name="factors_for_new_job" rows="2"></textarea>
+
+      <label>Would you like to rejoin the organisation in the future?</label>
+      <select name="would_rejoin">
+        <option value="">Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Is there anything the new company offers that this company doesn’t provide?</label>
+      <textarea name="new_company_benefits" rows="2"></textarea>
+    </div>
+
+    <!-- Section 3: Employee Experience -->
+    <div class="form-section">
+      <h3>Employee Experience & Feedback</h3><label>Were you respected as an individual? *</label>
+      <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
+
+      <span style="font-size: 12px;">No, Not at All</span>
+
+     <label><input type="radio" name="respected" value="1" required> 1</label>
+     <label><input type="radio" name="respected" value="2"> 2</label>
+     <label><input type="radio" name="respected" value="3"> 3</label>
+     <label><input type="radio" name="respected" value="4"> 4</label>
+     <label><input type="radio" name="respected" value="5"> 5</label>
+     <label><input type="radio" name="respected" value="6"> 6</label>
+     <label><input type="radio" name="respected" value="7"> 7</label>
+     <label><input type="radio" name="respected" value="8"> 8</label>
+     <label><input type="radio" name="respected" value="9"> 9</label>
+     <label><input type="radio" name="respected" value="10"> 10</label>
+
+     <span style="font-size: 12px;">Yes, Very Much</span>
+     </div>
+
+      <label>Did you receive enough training to do the job effectively?</label>
+      <select name="training_sufficient">
+        <option value="">Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Somewhat">Somewhat</option>
+      </select>
+
+<label>What did you feel about your manager’s behavior? *</label>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin-top: 10px;">
+  <thead style="background-color: #f2f2f2;">
+    <tr>
+      <th>Aspect</th>
+      <th>Very Satisfied</th>
+      <th>Somewhat Satisfied</th>
+      <th>Neither Satisfied nor Dissatisfied</th>
+      <th>Somewhat Dissatisfied</th>
+      <th>Very Dissatisfied</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Coaching Skills</td>
+      <td><input type="radio" name="manager_coaching" value="Very Satisfied" required></td>
+      <td><input type="radio" name="manager_coaching" value="Somewhat Satisfied"></td>
+      <td><input type="radio" name="manager_coaching" value="Neither Satisfied nor Dissatisfied"></td>
+      <td><input type="radio" name="manager_coaching" value="Somewhat Dissatisfied"></td>
+      <td><input type="radio" name="manager_coaching" value="Very Dissatisfied"></td>
+    </tr>
+    <tr>
+      <td>Attitude at work</td>
+      <td><input type="radio" name="manager_attitude" value="Very Satisfied" required></td>
+      <td><input type="radio" name="manager_attitude" value="Somewhat Satisfied"></td>
+      <td><input type="radio" name="manager_attitude" value="Neither Satisfied nor Dissatisfied"></td>
+      <td><input type="radio" name="manager_attitude" value="Somewhat Dissatisfied"></td>
+      <td><input type="radio" name="manager_attitude" value="Very Dissatisfied"></td>
+    </tr>
+    <tr>
+      <td>Administrative skills</td>
+      <td><input type="radio" name="manager_admin_skills" value="Very Satisfied" required></td>
+      <td><input type="radio" name="manager_admin_skills" value="Somewhat Satisfied"></td>
+      <td><input type="radio" name="manager_admin_skills" value="Neither Satisfied nor Dissatisfied"></td>
+      <td><input type="radio" name="manager_admin_skills" value="Somewhat Dissatisfied"></td>
+      <td><input type="radio" name="manager_admin_skills" value="Very Dissatisfied"></td>
+    </tr>
+  </tbody>
+</table>
+
+      <label>Anything especially challenging you had to contend with?</label>
+      <textarea name="challenges" rows="3"></textarea>
+
+      <label>Did you receive enough support to do your job effectively?</label>
+      <select name="support_sufficient">
+        <option value="">Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Somewhat">Somewhat</option>
+      </select>
+    </div>
+
+    <!-- Section 4: Additional Comments -->
+    <div class="form-section">
+
+      <h3>Reason for Leaving</h3>
+      <label>Reason for Relieving:</label>
+      <textarea name="reason_for_relieving" rows="3"></textarea>
+
+      <label>Interviewer Comments:</label>
+      <textarea name="interviewer_comments" rows="3"></textarea>
+
+      <label>Eligible for Rehire:</label>
+      <select name="eligible_for_rehire">
+        <option value="">Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+    <button type="submit">Submit Exit Interview</button>
+  </form>
+</body>
+</html>
